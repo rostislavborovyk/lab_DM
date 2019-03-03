@@ -1,19 +1,20 @@
 import random as r
-import re
 def rand(a):
-    a=int(a)
     A = set()
     uni = [i for i in range(20)]
-    for i in range(a):
+    for i in range(int(a)):
         temp = r.choice(uni)
         A.add(temp)
         uni.remove(temp)
     return A
-
+A=0
+B=0
+C=0
+U=0
 
 
 def universal(u):
-    U = {i for i in range(1,u)}
+    U = {i for i in range(u+1)}
     return U
 
 def str_to_set(stri):
@@ -22,7 +23,8 @@ def str_to_set(stri):
     # 1,2,3,4,5 --> {1,2,3,4,5}
     elements = stri.split(',')
     for i in elements:
-        sett.add(int(i))
+        if i.isdecimal():
+            sett.add(int(i))
 
     return sett
 
@@ -43,5 +45,11 @@ def print_manlabel(label_list, entry_list):
     B = (str_to_set(label_list[1].cget("text")))
     C = (str_to_set(label_list[2].cget("text")))
 
+def u_print(l,l1):
+    global U
+    l.configure(text=str(universal(int(l1.get()))))
+    U=str_to_set(l.cget("text"))
 
-print(str_to_set('1,2,3,4,5'))
+
+
+print(str_to_set('1,2,3,4,10,,,,190'))
