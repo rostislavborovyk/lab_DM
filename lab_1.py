@@ -4,7 +4,6 @@ from basic_alg import basic_alg
 from simplified_alg import simplified_alg
 from alg_2 import alg_2
 
-
 G = 82
 N = 3
 Var = (N+G % 60) % 30+1
@@ -16,7 +15,7 @@ print("Мій варіант:", (N+G % 60) % 30+1)
 
 def window2():
     win2 = Toplevel(root)
-    win2.geometry('400x200')
+    win2.geometry('850x350')
     win2_elements_label = Label(win2, text='Елементи множин:')
     win2_elements_label.grid(row=0, column=0, columnspan=2, padx=10, sticky='w')
     win2_elem_a1_label = Label(win2, text='Множина А:')
@@ -38,21 +37,119 @@ def window2():
     win2_man_button.bind('<Button-1>', lambda event: f.print_from_constants((win2_elem_a_label,
                                                                              win2_elem_b_label,
                                                                              win2_elem_c_label)))
-    def show():
-        pass
+    step_alg_label = Label(win2, text='Покрокове виконання алгоритму:')
+    step_alg_label.grid(row=0, column=2)
+    step_alg_exec_label = Label(win2, text='Натсніть на кнопку')
+    step_alg_exec_label.grid(row=1, column=2, rowspan=5)
+    exec_button = Button(win2, text='Запустити покрокове виконання')
+    exec_button.grid(row=7, column=2)
+    exec_button.bind('<Button-1>', lambda event: f.step_exec(step_alg_exec_label))
+    D_label = Label(win2, text='Множина D:')
+    D_label.grid(row=5, column=0)
+    D_show_label = Label(win2, text=str(basic_alg(f.A,f.B,f.C,f.U)))
+    D_show_label.grid(row=6, column=0)
+    save_button = Button(win2, text='Зберегти у файл')
+    save_button.grid(row=8, column=0)
+    save_button.bind('<Button-1>', lambda event: f.save_to_file1(str(basic_alg(f.A,f.B,f.C,f.U))))
 
 def window3():
     win3 = Toplevel(root)
-    win3.geometry('400x200')
+    win3.geometry('500x200')
 
+    label_show = Label(win3, text="Погляньте на множини A, B та C")
+    label_show.grid(row=0, column=0, columnspan=2)
+    label_a = Label(win3, text=('A:'))
+    label_a.grid(row=1, column=0)
+    label_al = Label(win3, text=str(f.A))
+    label_al.grid(row=1, column=1)
+    label_b = Label(win3, text=('B:'))
+    label_b.grid(row=2, column=0)
+    label_bl = Label(win3, text=str(f.B))
+    label_bl.grid(row=2, column=1)
+    label_c = Label(win3, text=('C:'))
+    label_c.grid(row=3, column=0)
+    label_cl = Label(win3, text=str(f.C))
+    label_cl.grid(row=3, column=1)
+    label_res = Label(win3, text='Запустіть покрокове виконання')
+    label_res.grid(row=0, column=2, rowspan=2)
+    exec_button = Button(win3, text='Запустити покрокове виконання')
+    exec_button.grid(row=4, column=2)
+    exec_button.bind('<Button-1>', lambda event: f.step_exec_2(f.A, f.B, f.C, f.U, label_res))
+    save_button = Button(win3, text='Зберегти у файл')
+    save_button.grid(row=4, column=0)
+    save_button.bind('<Button-1>', lambda event: f.save_to_file2(simplified_alg(f.A,f.B,f.C,f.U)))
 
 def window4():
+    global X,Y
+    X=f.A
+    Y=f.C
     win4 = Toplevel(root)
     win4.geometry('400x200')
+    label_show=Label(win4,text="Погляньте на множини Х та Y")
+    label_show.grid(row=0,column=0,columnspan=2)
+    label_x=Label(win4,text=('X:'))
+    label_x.grid(row=1,column=0)
+    label_xl=Label(win4, text=str(f.U-f.C))
+    label_xl.grid(row=1, column=1)
+    label_y = Label(win4, text=('Y:'))
+    label_y.grid(row=2, column=0)
+    label_yl = Label(win4, text=str(f.A))
+    label_yl.grid(row=2, column=1)
+    label_showres=Label(win4,text="Результат операції заданої за варіантом:")
+    label_showres.grid(row=3,column=0,sticky="w")
+    label_show_res=Label(win4,text="")
+    label_show_res.grid(row=3,column=1,sticky="w")
+    xy_button=Button(win4,text="Отримати результат")
+    xy_button.grid(row=4,column=0,sticky="w")
+    xy_button.bind('<Button-1>', lambda event: f.func2(f.A, f.C, f.U, label_show_res))
+    baton = Button(win4, text="Записати Z у файл")
+    baton.grid(row=4, column=1, sticky="w")
+    baton.bind('<Button-1>', lambda event: f.save_to_file3(f.func2(f.A, f.C, f.U, label_show_res)))
 
 def window5():
     win5 = Toplevel(root)
-    win5.geometry('400x200')
+    win5.geometry('700x300')
+    readfromfile=Label(win5,text="D з повного виразу:")
+    readfromfile.grid(row=0,column=0,sticky="w")
+    read_button=Button(win5,text="Зчитати з файлу")
+    read_button.grid(row=0,column=2,sticky="w")
+    label=Label(win5,text="")
+    label.grid(row=0,column=1,sticky="w")
+    read_button.bind("<Button-1>", lambda event: label.configure(text=str(f.read_from_file())))
+    readfromfile2=Label(win5,text="Результат спрощеного виразу D: ")
+    readfromfile2.grid(row=1,column=0,sticky="w")
+    read2_button=Button(win5,text="Зчитати з файлу")
+    read2_button.grid(row=1,column=2,sticky="w")
+    label2=Label(win5,text="")
+    label2.grid(row=1,column=1,sticky='w')
+    read2_button.bind('<Button-1>', lambda event: label2.configure(text=str(f.read_from_file2())))
+    virno_label=Label(win5,text="")
+    virno_label.grid(row=2,column=1,sticky="w")
+    virno_button=Button(win5,text='Перевірка на вірність')
+    virno_button.grid(row=2,column=0,sticky="w")
+    virno_button.bind('<Button-1>', lambda event: virno_label.configure(text=str(f.virno_funk(label.cget('text'),
+                                                                                              label2.cget('text')))))
+
+    readfromfile3 = Label(win5, text="Результат виразу Z, обчислений власною функцією: ")
+    readfromfile3.grid(row=3, column=0, sticky="w")
+    read3_button = Button(win5, text="Зчитати з файлу")
+    read3_button.grid(row=3, column=2, sticky="w")
+    label3 = Label(win5, text="")
+    label3.grid(row=3, column=1, sticky='w')
+    read3_button.bind('<Button-1>', lambda event: label3.configure(text=str(f.read_from_file3())))
+    obchus_label=Label(win5,text="Результат виразу Z, обчислений функціями Python:")
+    obchus_label.grid(row=4,column=0,sticky="w")
+    obchus_button=Button(win5,text="Обчислити")
+    obchus_button.grid(row=4,column=2,sticky="w")
+    obchus_label1 = Label(win5, text="")
+    obchus_label1.grid(row=4,column=1,sticky="w")
+    obchus_button.bind('<Button-1>', lambda event: obchus_label1.configure(text=f.calc_Z(f.A, f.C, f.U)))
+    equals_Z_button = Button(win5, text='Перевірити Z на рівність: ')
+    equals_Z_button.grid(row=5, column=0, sticky='w')
+    equals_Z_button.bind('<Button-1>', lambda event: f.Z_equals(obchus_label1,label3,equals_Z_label))
+    equals_Z_label = Label(win5, text='')
+    equals_Z_label.grid(row=5,column=1, sticky='w')
+
 # --------------------------------------------------------------------
 
 root = Tk()
