@@ -1,4 +1,5 @@
 import random as r
+import re
 def rand(a):
     a=int(a)
     A = set()
@@ -16,8 +17,14 @@ def universal(u):
     return U
 
 def str_to_set(stri):
-    A={int(i) for i in stri if i.isdecimal()}
-    return A
+    sett = set()
+    stri = str(stri)
+    # 1,2,3,4,5 --> {1,2,3,4,5}
+    elements = stri.split(',')
+    for i in elements:
+        sett.add(int(i))
+
+    return sett
 
 def print_label(label_list, entry_list):
     global A,B,C
@@ -35,3 +42,6 @@ def print_manlabel(label_list, entry_list):
     A = (str_to_set(label_list[0].cget("text")))
     B = (str_to_set(label_list[1].cget("text")))
     C = (str_to_set(label_list[2].cget("text")))
+
+
+print(str_to_set('1,2,3,4,5'))
