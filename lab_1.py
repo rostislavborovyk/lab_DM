@@ -15,13 +15,32 @@ print("Мій номер у групі:", N)
 print("Мій варіант:", (N+G % 60) % 30+1)
 # -----------------------windows--------------------------------------
 
+
 def window2():
     win2 = Toplevel(root)
     win2.geometry('400x200')
+    win2_elements_label = Label(win2, text='Елементи множин:')
+    win2_elements_label.grid(row=0, column=0, columnspan=2, padx=10)
+    win2_elem_a_label = Label(win2, text='')
+    win2_elem_a_label.grid(row=1, column=0, sticky='w', padx=10)
+
+    win2_elem_b_label = Label(win2, text='')
+    win2_elem_b_label.grid(row=2, column=0, sticky='w', padx=10)
+
+    win2_elem_c_label = Label(win2, text='')
+    win2_elem_c_label.grid(row=3, column=0, sticky='w', padx=10)
+
+    win2_man_button = Button(win2, text="Показати елементи!")
+    win2_man_button.grid(row=4, column=0, columnspan=2, pady=5)
+    win2_man_button.bind('<Button-1>', lambda event: f.print_from_constants((win2_elem_a_label,
+                                                                             win2_elem_b_label,
+                                                                             win2_elem_c_label)))
+
 
 def window3():
     win3 = Toplevel(root)
     win3.geometry('400x200')
+
 
 def window4():
     win4 = Toplevel(root)
