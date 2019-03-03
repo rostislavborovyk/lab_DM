@@ -1,7 +1,12 @@
 from random import randint
 def rand(a):
-    A={randint(0,20) for i in range(a)}
-    return A
+    A=[]
+    for i in range(100):
+        A.append(r.randint(0, 20))
+        if len(set(A))==5:
+            break
+    return set(A)
+print(rand(10))
 
 
 def universal(u):
