@@ -104,6 +104,8 @@ man_c_entry.grid(row=3, column=5, sticky='w')
 man_button = Button(root, text="Задати множини вручну!")
 man_button.grid(row=4, column=4, columnspan=2, pady=5)
 
+a=pow_a_entry.get()
+A=
 
 print("\nРозмір сітки: ", root.grid_size())
 
