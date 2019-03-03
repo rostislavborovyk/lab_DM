@@ -157,3 +157,4 @@ u_button.bind('<Button-1>', lambda event: f.u_print(label_u,universal_label_entr
 print("\nРозмір сітки: ", root.grid_size())
 
 root.mainloop()
+
