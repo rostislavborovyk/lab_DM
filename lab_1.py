@@ -4,7 +4,9 @@ from basic_alg import basic_alg
 from simplified_alg import simplified_alg
 from alg_2 import alg_2
 
-
+A=0
+B=0
+C=0
 G = 82
 N = 3
 Var = (N+G % 60) % 30+1
@@ -105,11 +107,24 @@ man_c_entry.grid(row=3, column=5, sticky='w')
 man_button = Button(root, text="Задати множини вручну!")
 man_button.grid(row=4, column=4, columnspan=2, pady=5)
 
-pow_button.bind('<Button-1>', lambda event: f.rand(int(pow_a_entry.get())))
 label_a_rand=Label(root, text="A:")
-label_a_rand.grid(row=5,column=2,sticky='w',padx=10)
+label_a_rand.grid(row=5,column=2,padx=10)
 label_al_rand=Label(root,text="")
+label_al_rand.grid(row=5,column=3,sticky="w")
+label_b_rand=Label(root, text="B:")
+label_b_rand.grid(row=6,column=2,padx=10)
+label_bl_rand=Label(root,text="")
+label_bl_rand.grid(row=6,column=3,sticky="w")
+label_c_rand=Label(root, text="C:")
+label_c_rand.grid(row=7,column=2,padx=10)
+label_cl_rand=Label(root,text="")
+label_cl_rand.grid(row=7,column=3,sticky="w")
 
+pow_button.bind('<Button-1>', lambda event:f.print_label((label_al_rand,label_bl_rand,label_cl_rand),
+                                                         (pow_a_entry,pow_b_entry,pow_c_entry)))
+
+man_button.bind('<Button-1>', lambda event: f.print_manlabel((label_al_rand,label_bl_rand,label_cl_rand),
+                                                         (man_a_entry,man_b_entry,man_c_entry)))
 
 
 print("\nРозмір сітки: ", root.grid_size())
