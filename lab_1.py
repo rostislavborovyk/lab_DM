@@ -1,4 +1,5 @@
 from tkinter import *
+import func as f
 from basic_alg import basic_alg
 from simplified_alg import simplified_alg
 from alg_2 import alg_2
@@ -89,23 +90,27 @@ pow_button.grid(row=4, column=2, columnspan=2, pady=5)
 
 manual_label = Label(root, text='Задати множини вручну')
 manual_label.grid(row=0, column=4, columnspan=2, padx=10)
-man_a_label = Label(root, text='Потужність для А:')
+man_a_label = Label(root, text='А:')
 man_a_label.grid(row=1, column=4, sticky='w', padx=10)
 man_a_entry = Entry(root)
 man_a_entry.grid(row=1, column=5, sticky='w')
-man_b_label = Label(root, text='Потужність для B:')
+man_b_label = Label(root, text='B:')
 man_b_label.grid(row=2, column=4, sticky='w', padx=10)
 man_b_entry = Entry(root)
 man_b_entry.grid(row=2, column=5, sticky='w')
-man_c_label = Label(root, text='Потужність для C:')
+man_c_label = Label(root, text='C:')
 man_c_label.grid(row=3, column=4, sticky='w', padx=10)
 man_c_entry = Entry(root)
 man_c_entry.grid(row=3, column=5, sticky='w')
 man_button = Button(root, text="Задати множини вручну!")
 man_button.grid(row=4, column=4, columnspan=2, pady=5)
 
-a=pow_a_entry.get()
-A=
+pow_button.bind('<Button-1>', lambda event: f.rand(int(pow_a_entry.get())))
+label_a_rand=Label(root, text="A:")
+label_a_rand.grid(row=5,column=2,sticky='w',padx=10)
+label_al_rand=Label(root,text="")
+
+
 
 print("\nРозмір сітки: ", root.grid_size())
 
