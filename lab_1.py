@@ -38,7 +38,8 @@ def window2():
     win2_man_button.bind('<Button-1>', lambda event: f.print_from_constants((win2_elem_a_label,
                                                                              win2_elem_b_label,
                                                                              win2_elem_c_label)))
-
+    def show():
+        pass
 
 def window3():
     win3 = Toplevel(root)

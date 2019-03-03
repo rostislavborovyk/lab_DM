@@ -24,8 +24,7 @@ def str_to_set(stri):
     # 1,2,3,4,5 --> {1,2,3,4,5}
     elements = stri.split(',')
     for i in elements:
-        if i.isdecimal():
-            sett.add(int(i))
+        sett.add(int(i))
 
     return sett
 
