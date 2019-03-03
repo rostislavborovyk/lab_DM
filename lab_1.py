@@ -151,8 +151,8 @@ u_label.grid(row=8,column=2,padx=10)
 label_u=Label(root, text="")
 label_u.grid(row=8,column=3,sticky="w")
 u_button=Button(root,text="Згенерувати універсальну множину")
-u_button.grid(row=9,column=0,sticky="s")
-u_button.bind('<Button-1>', lambda event: f.u_print(label_u,universal_label_entry))
+u_button.grid(row=9,column=0, sticky="s")
+u_button.bind('<Button-1>', lambda event: f.u_print(label_u, universal_label_entry))
 
 print("\nРозмір сітки: ", root.grid_size())
 

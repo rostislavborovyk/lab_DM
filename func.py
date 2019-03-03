@@ -1,5 +1,6 @@
 import random as r
 import re
+
 def rand(a):
     a=int(a)
     A = set()
@@ -13,7 +14,7 @@ def rand(a):
 
 
 def universal(u):
-    U = {i for i in range(1,u)}
+    U = {i for i in range(u+1)}
     return U
 
 def str_to_set(stri):
@@ -24,9 +25,7 @@ def str_to_set(stri):
     # 1,2,3,4,5 --> {1,2,3,4,5}
     elements = stri.split(',')
     for i in elements:
-        if i.isdecimal():
-            sett.add(int(i))
-
+        sett.add(int(i))
     return sett
 
 def print_label(label_list, entry_list):
@@ -57,6 +56,6 @@ def print_from_constants(label_list):
     label_list[0].configure(text=str(A))
     label_list[1].configure(text=str(B))
     label_list[2].configure(text=str(C))
-
+    print(str(A))
 
 print(str_to_set('{1,2,3,4,5}'))
