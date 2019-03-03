@@ -3,6 +3,7 @@ from basic_alg import basic_alg
 from simplified_alg import simplified_alg
 from alg_2 import alg_2
 
+
 G = 82
 N = 3
 Var = (N+G % 60) % 30+1
@@ -10,6 +11,7 @@ print("Моя група: ІВ -", G)
 print("Мій номер у групі:", N)
 print("Мій варіант:", (N+G % 60) % 30+1)
 # -----------------------windows--------------------------------------
+
 def window2():
     win2 = Toplevel(root)
     win2.geometry('400x200')
@@ -82,8 +84,26 @@ pow_c_label = Label(root, text='Потужність для C:')
 pow_c_label.grid(row=3, column=2, sticky='w', padx=10)
 pow_c_entry = Entry(root)
 pow_c_entry.grid(row=3, column=3, sticky='w')
-pow_button = Button(root, text="Задати!")
+pow_button = Button(root, text="Згенерувати множини автоматично!")
 pow_button.grid(row=4, column=2, columnspan=2, pady=5)
+
+manual_label = Label(root, text='Задати множини вручну')
+manual_label.grid(row=0, column=4, columnspan=2, padx=10)
+man_a_label = Label(root, text='Потужність для А:')
+man_a_label.grid(row=1, column=4, sticky='w', padx=10)
+man_a_entry = Entry(root)
+man_a_entry.grid(row=1, column=5, sticky='w')
+man_b_label = Label(root, text='Потужність для B:')
+man_b_label.grid(row=2, column=4, sticky='w', padx=10)
+man_b_entry = Entry(root)
+man_b_entry.grid(row=2, column=5, sticky='w')
+man_c_label = Label(root, text='Потужність для C:')
+man_c_label.grid(row=3, column=4, sticky='w', padx=10)
+man_c_entry = Entry(root)
+man_c_entry.grid(row=3, column=5, sticky='w')
+man_button = Button(root, text="Задати множини вручну!")
+man_button.grid(row=4, column=4, columnspan=2, pady=5)
+
 
 print("\nРозмір сітки: ", root.grid_size())
 
