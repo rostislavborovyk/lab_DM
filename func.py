@@ -22,20 +22,12 @@ def universal(u):
     return U
 
 def str_to_set(stri):
-
     sett = set()
     stri = str(stri)
-    stri = stri.strip(',')
-    if stri[0] == '{' and stri[-1] == '}':
-        stri = stri[1:-1]
-
-
-
-    # 1,2,3,4,5 --> {1,2,3,4,5}
-    elements = stri.split(',')
+    pattern = re.compile('\d+')
+    elements = re.findall(pattern, stri)
     for i in elements:
         sett.add(int(i))
-
     return sett
 
 def print_label(label_list, entry_list):
@@ -146,4 +138,7 @@ def calc_Z(A,C,U):
 def Z_equals(label1, label2, label3):
     label3.configure(text="Результати збігаються") if label1.cget('text') == label2.cget('text') else label3.configure(text="Результати не збігаються")
 
-print('Stri:' + str(str_to_set(',,,2,3,4,1,,')))
+#print('Stri:' + str(str_to_set(',,,2,3,4,1,,')))
+print("Stri ti set:" + str(str_to_set(',,,1,2,3,4,5,1;;')))
+print("Stri ti set:" + str(str_to_set('1,,,2,123,4,5,1,,,')))
+print("Stri ti set:" + str(str_to_set('1,,2132,313,,,4,51,,23,1')))
