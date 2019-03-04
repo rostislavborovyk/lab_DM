@@ -136,9 +136,11 @@ def calc_Z(A,C,U):
     Y = A
     return str(X & Y)
 def Z_equals(label1, label2, label3):
-    label3.configure(text="Результати збігаються") if label1.cget('text') == label2.cget('text') else label3.configure(text="Результати не збігаються")
+    if str_to_set(label1.cget('text')) == str_to_set(label2.cget('text')):
+        label3.configure(text='Результати збігаються')
+    else:
+        label3.configure(text='Результати збігаються')
+
 
 #print('Stri:' + str(str_to_set(',,,2,3,4,1,,')))
 print("Stri ti set:" + str(str_to_set(',,,1,2,3,4,5,1;;')))
-print("Stri ti set:" + str(str_to_set('1,,,2,123,4,5,1,,,')))
-print("Stri ti set:" + str(str_to_set('1,,2132,313,,,4,51,,23,1')))
