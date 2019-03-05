@@ -15,7 +15,7 @@ print("Мій варіант:", (N+G % 60) % 30+1)
 
 def window2():
     win2 = Toplevel(root)
-    win2.geometry('850x350')
+    win2.geometry('950x350')
     win2_elements_label = Label(win2, text='Елементи множин:')
     win2_elements_label.grid(row=0, column=0, columnspan=2, padx=10, sticky='w')
     win2_elem_a1_label = Label(win2, text='Множина А:')
@@ -40,7 +40,7 @@ def window2():
     step_alg_label = Label(win2, text='Покрокове виконання алгоритму:')
     step_alg_label.grid(row=0, column=2)
     step_alg_exec_label = Label(win2, text='Натсніть на кнопку')
-    step_alg_exec_label.grid(row=1, column=2, rowspan=5)
+    step_alg_exec_label.grid(row=1, column=2, rowspan=7)
     exec_button = Button(win2, text='Запустити покрокове виконання')
     exec_button.grid(row=7, column=2)
     exec_button.bind('<Button-1>', lambda event: f.step_exec(step_alg_exec_label))
@@ -54,7 +54,7 @@ def window2():
 
 def window3():
     win3 = Toplevel(root)
-    win3.geometry('500x200')
+    win3.geometry('600x200')
 
     label_show = Label(win3, text="Погляньте на множини A, B та C")
     label_show.grid(row=0, column=0, columnspan=2)
@@ -84,7 +84,7 @@ def window4():
     X=f.A
     Y=f.C
     win4 = Toplevel(root)
-    win4.geometry('400x200')
+    win4.geometry('500x200')
     label_show=Label(win4,text="Погляньте на множини Х та Y")
     label_show.grid(row=0,column=0,columnspan=2)
     label_x=Label(win4,text=('X:'))

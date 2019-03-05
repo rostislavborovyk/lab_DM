@@ -18,8 +18,28 @@ def rand(a):
 
 
 def universal(u):
+    k = 0
     U = {i for i in range(1,u)}
+    U = str(U)
+    print('str u ' + U)
+    corrector = 0
+    for i in range(len(U)):
+        i -= corrector
+        if i != len(U) - 1:
+            if U[i] == ' ' and k > 40:
+                U = U[:i-1] + '\n' + U[i+1:]
+                k = 0
+                corrector += 1
+            else:
+                k += 1
+        if i == len(U) - 1:
+            if U[i] == ' ' and k > 40:
+                U = U[:i-1] + '\n'
+                k = 0
+            else:
+                k += 1
     return U
+
 
 def str_to_set(stri):
     sett = set()
@@ -143,4 +163,4 @@ def Z_equals(label1, label2, label3):
 
 
 #print('Stri:' + str(str_to_set(',,,2,3,4,1,,')))
-print("Stri ti set:" + str(str_to_set(',,,1,2,3,4,5,1;;')))
+#print("Stri ti set:" + str(str_to_set(',,,1,2,3,4,5,1;;')))
