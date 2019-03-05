@@ -8,7 +8,7 @@ from basic_alg import basic_alg
 def rand(a):
     a=int(a)
     A = set()
-    uni = [i for i in range(20)]
+    uni = [i for i in range(max(U))]
     for i in range(a):
         temp = r.choice(uni)
         A.add(temp)

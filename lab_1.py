@@ -245,7 +245,7 @@ pow_button.bind('<Button-1>', lambda event:f.print_label((label_al_rand,label_bl
 
 man_button.bind('<Button-1>', lambda event: f.print_manlabel((label_al_rand,label_bl_rand,label_cl_rand),
                                                          (man_a_entry,man_b_entry,man_c_entry)))
-enter_universal_label=Label(root,text="Потужнысть універсальної множини:")
+enter_universal_label=Label(root,text="Потужність універсальної множини:\n(Задавати в першу чергу)")
 enter_universal_label.grid(row=6,column=0,sticky="w")
 universal_label_entry=Entry(root)
 universal_label_entry.grid(row=6,column=1,sticky="w")
